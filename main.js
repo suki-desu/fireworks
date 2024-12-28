@@ -6,10 +6,10 @@ canvas.height = window.innerHeight;
 
 const fireworkscolors = ['#FF5C00', '#F2AA00', '#A66D9A', '#A66D9A', '#1F193D'];
 
-function Fireworks(x, y, stopY, speed) {
+function Fireworks(x, y, stopY) {
     this.x = x;
     this.y = y;
-    this.speed = speed;
+    this.speed = 6;
     this.stopY = stopY;
     this.exploded = false;
     this.particles = [];
@@ -99,12 +99,10 @@ launchFirework();
 canvas.addEventListener('click', function (event) {
     let x = event.clientX;
     let y = event.clientY;
-    let speed = Math.random() * 5 + 1;
-    fireworksArray.push(new Fireworks(x, innerHeight, y, speed));
+    fireworksArray.push(new Fireworks(x, innerHeight, y));
 });
 
 setInterval(function () {
     let x = Math.random() * innerWidth;
-    let speed = Math.random() * 5 + 1;
-    fireworksArray.push(new Fireworks(x, innerHeight, Math.random() * innerHeight - 30, speed));
+    fireworksArray.push(new Fireworks(x, innerHeight, Math.random() * innerHeight - 30));
 }, 3000);
